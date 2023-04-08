@@ -1,0 +1,181 @@
+"Item.Code","Item","vik.flag","broadacre","broadacre_all","current","interest","legumes","roots","specialty","tree_fruit","tree_nuts"
+"0221","Almonds, with shell","tree nuts",0,0,0,0,0,0,0,0,1
+"0711","Anise, badian, fennel, coriander","NA",0,0,0,0,0,0,0,0,0
+"0515","Apples","tree fruit",0,0,0,0,0,0,0,1,0
+"0526","Apricots","tree fruit",0,0,0,0,0,0,0,1,0
+"0044","Barley","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0558","Berries nes","interest",0,0,0,1,0,0,0,0,0
+"0767","Cotton lint","NA",0,0,0,0,0,0,0,0,0
+"0329","Cottonseed","NA",0,0,0,0,0,0,0,0,0
+"0569","Figs","tree fruit",0,0,0,0,0,0,0,1,0
+"0512","Fruit, citrus nes","current",0,0,1,0,0,0,0,0,0
+"0619","Fruit, fresh nes","tree fruit",0,0,0,0,0,0,0,1,0
+"0541","Fruit, stone nes","tree fruit",0,0,0,0,0,0,0,1,0
+"0560","Grapes","interest",0,0,0,1,0,0,1,0,0
+"0333","Linseed","NA",0,0,0,0,0,0,0,0,0
+"0056","Maize","broadacre",1,1,0,0,0,0,0,0,0
+"0568","Melons, other (inc.cantaloupes)","current",0,0,1,0,0,0,0,0,0
+"0079","Millet","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0234","Nuts nes","tree nuts",0,0,0,0,0,0,0,0,1
+"0260","Olives","NA",0,0,0,0,0,0,0,0,0
+"0403","Onions, dry","NA",0,0,0,0,0,0,0,0,0
+"0490","Oranges","current",0,0,1,0,0,0,0,0,0
+"0534","Peaches and nectarines","tree fruit",0,0,0,0,0,0,0,1,0
+"0521","Pears","tree fruit",0,0,0,0,0,0,0,1,0
+"0223","Pistachios","tree nuts",0,0,0,0,0,0,0,0,1
+"0536","Plums and sloes","tree fruit",0,0,0,0,0,0,0,1,0
+"0116","Potatoes","broadacre",1,1,0,0,0,1,0,0,0
+"0211","Pulses nes","NA",0,0,0,0,0,0,0,0,0
+"0027","Rice, paddy","broadacre",1,1,0,0,0,0,0,0,0
+"0328","Seed cotton","interest",0,0,0,1,0,0,0,0,0
+"0289","Sesame seed","NA",0,0,0,0,0,0,0,0,0
+"0723","Spices nes","NA",0,0,0,0,0,0,0,0,0
+"0157","Sugar beet","interest",0,0,0,1,0,0,0,0,0
+"0156","Sugar cane","broadacre",1,1,1,0,0,0,0,0,0
+"0267","Sunflower seed","NA",0,0,0,0,0,0,0,0,0
+"0463","Vegetables, fresh nes","NA",0,0,0,0,0,0,0,0,0
+"0222","Walnuts, with shell","tree nuts",0,0,0,0,0,0,0,0,1
+"0567","Watermelons","current",0,0,1,0,0,0,1,0,0
+"0015","Wheat","broadacre",0,1,0,0,0,0,0,0,0
+"1817","Cereals (Rice Milled Eqv)","NA",0,0,0,0,0,0,0,0,0
+"1717","Cereals, Total","NA",0,0,0,0,0,0,0,0,0
+"1804","Citrus Fruit, Total","NA",0,0,0,0,0,0,0,0,0
+"1814","Coarse Grain, Total","NA",0,0,0,0,0,0,0,0,0
+"1753","Fibre Crops Primary","NA",0,0,0,0,0,0,0,0,0
+"1738","Fruit Primary","NA",0,0,0,0,0,0,0,0,0
+"1731","Oilcrops","NA",0,0,0,0,0,0,0,0,0
+"1841","Oilcrops, Cake Equivalent","NA",0,0,0,0,0,0,0,0,0
+"1732","Oilcrops, Oil Equivalent","NA",0,0,0,0,0,0,0,0,0
+"1726","Pulses, Total","NA",0,0,0,0,0,0,0,0,0
+"1720","Roots and Tubers, Total","NA",0,0,0,0,0,0,0,0,0
+"1729","Treenuts, Total","NA",0,0,0,0,0,0,0,0,0
+"1735","Vegetables Primary","NA",0,0,0,0,0,0,0,0,0
+"0176","Beans, dry","NA",0,0,0,0,0,0,0,0,0
+"0414","Beans, green","NA",0,0,0,0,0,0,0,0,0
+"0181","Broad beans, horse beans, dry","NA",0,0,0,0,0,0,0,0,0
+"0358","Cabbages and other brassicas","NA",0,0,0,0,0,0,0,0,0
+"0426","Carrots and turnips","NA",0,0,0,0,0,0,0,0,0
+"0393","Cauliflowers and broccoli","NA",0,0,0,0,0,0,0,0,0
+"0531","Cherries","tree fruit",0,0,0,0,0,0,0,1,0
+"0530","Cherries, sour","tree fruit",0,0,0,0,0,0,0,1,0
+"0220","Chestnut","tree nuts",0,0,0,0,0,0,0,0,1
+"0401","Chillies and peppers, green","NA",0,0,0,0,0,0,1,0,0
+"0397","Cucumbers and gherkins","NA",0,0,0,0,0,0,0,0,0
+"0577","Dates","tree fruit",0,0,0,0,0,0,0,1,0
+"0399","Eggplants (aubergines)","NA",0,0,0,0,0,0,0,0,0
+"0406","Garlic","interest",0,0,0,1,0,0,0,0,0
+"0677","Hops","NA",0,0,0,0,0,0,0,0,0
+"0407","Leeks, other alliaceous vegetables","NA",0,0,0,0,0,0,0,0,0
+"0497","Lemons and limes","current",0,0,1,0,0,0,0,0,0
+"0372","Lettuce and chicory","NA",0,0,0,0,0,0,0,0,0
+"0449","Mushrooms and truffles","NA",0,0,0,0,0,0,0,0,0
+"0075","Oats","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0430","Okra","NA",0,0,0,0,0,0,0,0,0
+"0402","Onions, shallots, green","NA",0,0,0,0,0,0,1,0,0
+"0417","Peas, green","NA",0,0,0,0,0,0,0,0,0
+"0394","Pumpkins, squash and gourds","NA",0,0,0,0,0,0,0,0,0
+"0523","Quinces","tree fruit",0,0,0,0,0,0,0,1,0
+"0071","Rye","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0083","Sorghum","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0236","Soybeans","legumes",0,0,0,0,1,0,0,0,0
+"0373","Spinach","NA",0,0,0,0,0,0,0,0,0
+"0544","Strawberries","current",0,0,1,0,0,0,1,0,0
+"0495","Tangerines, mandarins, clementines, satsumas","current",0,0,1,0,0,0,0,0,0
+"0826","Tobacco, unmanufactured","NA",0,0,0,0,0,0,0,0,0
+"0388","Tomatoes","interest",0,0,0,1,0,0,1,0,0
+"0420","Vegetables, leguminous nes","NA",0,0,0,0,0,0,0,0,0
+"0205","Vetches","NA",0,0,0,0,0,0,0,0,0
+"0366","Artichokes","NA",0,0,0,0,0,0,0,0,0
+"0486","Bananas","tree fruit",0,0,0,0,0,0,1,1,0
+"0461","Carobs","NA",0,0,0,0,0,0,0,0,0
+"0191","Chick peas","NA",0,0,0,0,0,0,0,0,0
+"0689","Chillies and peppers, dry","NA",0,0,0,0,0,0,0,0,0
+"0603","Fruit, tropical fresh nes","tree fruit",0,0,0,0,0,0,0,1,0
+"0507","Grapefruit (inc. pomelos)","current",0,0,1,0,0,0,0,0,0
+"0242","Groundnuts, with shell","legumes",0,0,0,0,1,0,1,0,0
+"0201","Lentils","NA",0,0,0,0,0,0,0,0,0
+"0187","Peas, dry","NA",0,0,0,0,0,0,0,0,0
+"0270","Rapeseed","NA",0,0,0,0,0,0,0,0,0
+"0097","Triticale","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0125","Cassava","roots",0,0,0,0,0,1,0,0,0
+"0661","Cocoa, beans","NA",0,0,0,0,0,0,0,0,0
+"0249","Coconuts","NA",0,0,0,0,0,0,0,0,0
+"0446","Maize, green","NA",0,0,0,0,0,0,0,0,0
+"0574","Pineapples","tree fruit",0,0,0,0,0,0,1,1,0
+"0136","Taro (cocoyam)","roots",0,0,0,0,0,1,0,0,0
+"0137","Yams","roots",0,0,0,0,0,1,0,0,0
+"0782","Bastfibres, other","NA",0,0,0,0,0,0,0,0,0
+"0217","Cashew nuts, with shell","tree nuts",0,0,0,0,0,0,0,0,1
+"0265","Castor oil seed","NA",0,0,0,0,0,0,0,0,0
+"0656","Coffee, green","NA",0,0,0,0,0,0,0,0,0
+"0773","Flax fibre and tow","NA",0,0,0,0,0,0,0,0,0
+"0254","Oil palm fruit","current",0,0,1,0,0,0,0,0,0
+"0257","Oil, palm","current",0,0,1,0,0,0,0,0,0
+"0256","Palm kernels","current",0,0,1,0,0,0,0,0,0
+"0789","Sisal","NA",0,0,0,0,0,0,0,0,0
+"0122","Sweet potatoes","broadacre",0,1,0,0,0,1,0,0,0
+"0571","Mangoes, mangosteens, guavas","tree fruit",0,0,0,0,0,0,1,1,0
+"0367","Asparagus","NA",0,0,0,0,0,0,0,0,0
+"0572","Avocados","tree fruit",0,0,0,0,0,0,0,1,0
+"0101","Canary seed","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0108","Cereals nes","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0821","Fibre crops nes","NA",0,0,0,0,0,0,0,0,0
+"0210","Lupins","NA",0,0,0,0,0,0,0,0,0
+"0671","Mate","NA",0,0,0,0,0,0,0,0,0
+"0339","Oilseeds nes","NA",0,0,0,0,0,0,0,0,0
+"0600","Papayas","tree fruit",0,0,0,0,0,0,0,1,0
+"0748","Peppermint","NA",0,0,0,0,0,0,0,0,0
+"0280","Safflower seed","NA",0,0,0,0,0,0,0,0,0
+"0423","String beans","NA",0,0,0,0,0,0,0,0,0
+"0667","Tea","NA",0,0,0,0,0,0,0,0,0
+"0275","Tung nuts","NA",0,0,0,0,0,0,0,0,0
+"0225","Hazelnuts, with shell","tree nuts",0,0,0,0,0,0,0,0,1
+"0552","Blueberries","interest",0,0,0,1,0,0,0,0,0
+"0195","Cow peas, dry","NA",0,0,0,0,0,0,0,0,0
+"0550","Currants","interest",0,0,0,1,0,0,0,0,0
+"0592","Kiwi fruit","tree fruit",0,0,0,0,0,0,1,1,0
+"0292","Mustard seed","NA",0,0,0,0,0,0,0,0,0
+"0587","Persimmons","tree fruit",0,0,0,0,0,0,0,1,0
+"0547","Raspberries","interest",0,0,0,1,0,0,0,0,0
+"0089","Buckwheat","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0549","Gooseberries","interest",0,0,0,1,0,0,0,0,0
+"0103","Grain, mixed","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0777","Hemp tow waste","NA",0,0,0,0,0,0,0,0,0
+"0296","Poppy seed","NA",0,0,0,0,0,0,0,0,0
+"0554","Cranberries","interest",0,0,0,1,0,0,0,0,0
+"0197","Pigeon peas","NA",0,0,0,0,0,0,0,0,0
+"0489","Plantains and others","tree fruit",0,0,0,0,0,0,0,1,0
+"0226","Areca nuts","tree nuts",0,0,0,0,0,0,0,0,1
+"0813","Coir","NA",0,0,0,0,0,0,0,0,0
+"0720","Ginger","current",0,0,1,0,0,0,1,0,0
+"0780","Jute","NA",0,0,0,0,0,0,0,0,0
+"0836","Rubber, natural","NA",0,0,0,0,0,0,0,0,0
+"0161","Sugar crops nes","interest",0,0,0,1,0,0,0,0,0
+"0542","Fruit, pome nes","tree fruit",0,0,0,0,0,0,0,1,0
+"0459","Chicory roots","NA",0,0,0,0,0,0,0,0,0
+"0692","Vanilla","interest",0,0,0,1,0,0,0,0,0
+"0149","Roots and tubers nes","roots",0,0,0,0,0,1,0,0,0
+"0135","Yautia (cocoyam)","roots",0,0,0,0,0,1,0,0,0
+"0094","Fonio","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0263","Karite nuts (sheanuts)","NA",0,0,0,0,0,0,0,0,0
+"0224","Kola nuts","tree nuts",0,0,0,0,0,0,0,0,1
+"0299","Melonseed","NA",0,0,0,0,0,0,0,0,0
+"0687","Pepper (piper spp.)","NA",0,0,0,0,0,0,0,0,0
+"0702","Nutmeg, mace and cardamoms","NA",0,0,0,0,0,0,0,0,0
+"0216","Brazil nuts, with shell","tree nuts",0,0,0,0,0,0,0,0,1
+"0754","Pyrethrum, dried","NA",0,0,0,0,0,0,0,0,0
+"0092","Quinoa","broadacre - minor",0,1,0,0,0,0,0,0,0
+"0591","Cashewapple","tree fruit",0,0,0,0,0,0,0,1,0
+"0788","Ramie","NA",0,0,0,0,0,0,0,0,0
+"0378","Cassava leaves","NA",0,0,0,0,0,0,0,0,0
+"0336","Hempseed","NA",0,0,0,0,0,0,0,0,0
+"0203","Bambara beans","NA",0,0,0,0,0,0,0,0,0
+"0693","Cinnamon (cannella)","NA",0,0,0,0,0,0,0,0,0
+"0698","Cloves","NA",0,0,0,0,0,0,0,0,0
+"0305","Tallowtree seed","NA",0,0,0,0,0,0,0,0,0
+"0800","Agave fibres nes","interest",0,0,0,1,0,0,0,0,0
+"0809","Manila fibre (abaca)","NA",0,0,0,0,0,0,0,0,0
+"0778","Kapok fibre","NA",0,0,0,0,0,0,0,0,0
+"0310","Kapok fruit","NA",0,0,0,0,0,0,0,0,0
+"0311","Kapokseed in shell","NA",0,0,0,0,0,0,0,0,0
+"0277","Jojoba seed","NA",0,0,0,0,0,0,0,0,0

@@ -1,0 +1,9 @@
+.Rapp.history
+.Rhistory
+*.Rproj
+.Rproj.user/
+background+docs/
+csv/Production_Crops_Livestock_E_All_Data_(Normalized).csv
+csv-old/
+plots-old/
+zips/
