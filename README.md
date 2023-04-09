@@ -11,44 +11,46 @@ I broke down the data by selected geography, nutrients, and crops based on the s
 
 Most of the files are available for download from the FAO: <http://www.fao.org/faostat/en/#data>. Original data is in CSV format.
 
-Both the crops data and fertilizer data needed some cleaning, all of which I did in R.
+The crop data file was huge, at 487 MB. R parsed it fine, but that's too much to upload to GitHub. I wrote a shell script to remove only the lines I needed for the analyses (4.1 MB), re-tested, and then pushed to GitHub.
 
-I created two CSV settings file, based on conversations with the sales director:
+Both the crops data and fertilizer data needed significant cleaning and manipulation, all of which I did in R.
+
+I created two CSV settings files, based on conversations with the sales director:
 
 - `items.csv`: categorize crops, create better labels, set data flags
 - `countries.csv`: flag and group countries of interest
 
-When I updated this project with newer data files recently, I noticed that the column order had changed and that certain keys (Item Code and Area Code) were inconsistent over time. e.g. the Area Code for Malaysia changed.
+When I updated this project with newer data files recently, that the column order had changed, new columns were added, and certain keys (Item Code and Area Code) were inconsistent over time. e.g. the Area Code for Malaysia changed.
 
 ### ColorBrewer
 
 I am a fan of [ColorBrewer](https://colorbrewer2.org/) and used it throughout this project, with the help of the `RColorBrewer` library.
 
 
-### Novel (for me) techniques
+### Novel (for me) technique
 
 This was my first attempt to use the ggsave() function to export a plot to disk, rather than manually export via RStudio's plot viewer.
 
 Basic requirements
 ------------------
 R/RStudio, ggplot and several other libraries:
-- reshape
-- tidyverse
-- RColorBrewer
-- scales
-- ggrepel
+- `reshape`
+- `tidyverse`
+- `RColorBrewer`
+- `scales`
+- `ggrepel`
 
 Files in this repo
 ------------------
     README.md
-    crops.R (visualizations by crop and geography)
-    fert.R (visualizations by fertilizer/nutrient and geography)
-    grep-product-csv.sh (shell script to grep out lines needed from bulk data download.)
-    unfao-fert-crop.R (settings, load libraries)
+    crops.R     # visualizations by crop and geography
+    fert.R      # visualizations by fertilizer/nutrient and geography
+    grep-product-csv.sh   # Shell script. Pull needed lines from bulk download
+    unfao-fert-crop.R     # settings, load libraries
     csv/
-      countries.csv (see above)
-      items.csv (see above)
-      production_crops_expurgated.csv (Crop data grepped out of 487MB download)
+      countries.csv       # flag and group countries of interest
+      items.csv           # categorize crops, create better labels, set data flags
+      production_crops_expurgated.csv   # crop data selected by grep-product-csv.sh
       Inputs_FertilizersNutrient_E_All_Data_(Normalized).csv
       Inputs_FertilizersProduct_E_All_Data_(Normalized).csv
 
@@ -84,6 +86,8 @@ From the FAO documentation...
 Plots / Visualizations
 ----------------------
 
+Click images to zoom to full size.
+
 ### Asia-Pacific Broadacre Crops (Hectares Harvested)
 
 The company is interested in the total hectares planted of 4 specific broadacre crops. The more land planted... the more fertilizer needed, all other things being equal. This shows that maize (corn) and rice are by far the major crops in selected Asia-Pacific countries.
@@ -92,7 +96,7 @@ The company is interested in the total hectares planted of 4 specific broadacre 
 
 ### China: Median area planted & production tonnage, 2017-2021, by crop
 
-This required aggregating data for selected years and grouping the groups by various criteria (broadacre, tree nuts, special interest, currently marketed to). Each criteria was assigned a color. We can see that certain crops of interest have high potential. Tree nuts, not so much.
+This required aggregating data for selected years and grouping the groups by various criteria (broadacre, tree nuts, special interest, currently marketed to). Each group was assigned a color. We can see that certain crops of interest have high potential. Tree nuts seemed not to be promising.
 
 I had to apply log transformations to the scale to avoid all points being gathered in the lower left. Requires some explanation to unsophisticated audiences.
 
@@ -101,21 +105,21 @@ I had to apply log transformations to the scale to avoid all points being gather
 
 ### China: Specialty Crops, area harvested
 
-Specialty crops are a good application for the company's specialized fertilizers. This bar chart catches the eye... clearly marketing towards groundnuts (peanuts) will be the first thing to try.
+Specialty crops are a good application for the company's specialized fertilizers. This bar chart catches the eye. It appears groundnuts (peanuts) might be the application upon which to focus marketing efforts.
 
 ![China: specialty crops, area harvested](plots/china-specialty-crops-area.png)
 
-
+<!--
 ### China: crops by area planted
 
 China is a market with growth potential for the company. This simple bar chart shows that cereal crops dominate in terms of area planted. Not impressive to look at, but an important message.
 
 ![China: Crops by area planted)](plots/china-crops-by-area.png)
+-->
 
+### Global Nutrient Inputs to Agricultural Soils (M tons, by region & year)
 
-### Global Nutrient Inputs to Agricultural Soils (Area)
-
-This excludes fertilizers used on turf and non-agricultural applications. We can see that nitrogen dominates by tonnage. We can also see that Asia and the Americas use the lions share of all three main nutrients. Marketing to Europe is more expensive, more highly-regulated and lower volume.
+This excludes fertilizers used on turf and non-agricultural applications. We can see that nitrogen dominates by tonnage. We can also see that Asia and the Americas use the lion's share of all three main nutrients. Sales to Europe are more expensive, more highly-regulated and lower volume.
 
 ![Global Nutrient Inputs to Agricultural Soils](plots/global-nutrients-facets-by-region.png)
 
