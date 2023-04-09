@@ -40,6 +40,14 @@ R/RStudio, ggplot and several other libraries:
 - `scales`
 - `ggrepel`
 
+### Optional
+
+The shell script `grep-product-csv.sh` requires z shell (zsh), bash or similar, but there are two ways to avoid using it:
+
+- Download the bulk data from FAOSTAT and pull the whole file into R
+- Use the CSV file in this repo
+
+
 Files in this repo
 ------------------
     README.md
@@ -53,21 +61,6 @@ Files in this repo
       production_crops_expurgated.csv   # crop data selected by grep-product-csv.sh
       Inputs_FertilizersNutrient_E_All_Data_(Normalized).csv
       Inputs_FertilizersProduct_E_All_Data_(Normalized).csv
-
-
-Useful links
-------------------
-International Fertilizer Industry Association (IFA) Database
-<http://www.fertilizer.org>
-
-United Nations Commodity Trade Statistics Database (COMTRADE)
-<http://comtrade.un.org>
-
-FAO &UNSD (2017) System of Environmental-Economic Accounting for Agriculture,Forestry and Fisheries: SEEA AFF. White cover version.
-<https://seea.un.org/content/ag-for-fish>
-
-UNSD (2017) Framework for the Development of Environment Statistics (FDES2013)
-<https://unstats.un.org/unsd/envstats/fdes.cshtml>
 
 
 Limitations
