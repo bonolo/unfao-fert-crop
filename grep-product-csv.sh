@@ -8,7 +8,6 @@ grep -irh agave crops2017-21.csv > agave.csv
 grep -irh \"2021\",\"2021\" agave.csv > agave2021.csv
 
 grep -irh "China" crops2017-21.csv >> apac-countries.csv
-grep -irh "China, mainland" crops2017-21.csv >> apac-countries.csv
 grep -irh "Indonesia" crops2017-21.csv >> apac-countries.csv
 grep -irh "Thailand" crops2017-21.csv >> apac-countries.csv
 grep -irh "Viet Nam" crops2017-21.csv >> apac-countries.csv

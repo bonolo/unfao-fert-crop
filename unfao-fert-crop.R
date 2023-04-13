@@ -3,9 +3,7 @@ setwd("~/Projects/unfao-fert-crop")
 
 library(reshape)
 library(tidyverse)
-# library(ggplot2)
 library(RColorBrewer)
-# library(dplyr)
 library(scales)
 library(ggrepel)
 # library(WriteXLS)
@@ -22,12 +20,15 @@ options(scipen = 100, digits = 6)
 light.grey <- "#dddddd"
 light.grey.line <- element_line(linewidth = 0.3, color = light.grey)
 
-theme_set(theme_light())
+theme_set(theme_light(base_family = "sans"))
 theme.base <- theme(panel.border = element_blank()
                     , panel.grid.major = element_blank()
                     , panel.grid.minor = element_blank()
                     , axis.ticks.x = element_blank()
                     , axis.ticks.y = element_blank()
+                    , text = element_text(size = 5)
+                    , strip.background = element_rect(fill = "#eeeeee")
+                    , strip.text = element_text(colour = "#000000")
                     # , axis.line.x = light.grey.line
 )
 

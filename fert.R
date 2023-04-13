@@ -2,6 +2,9 @@
 # That's where the library() calls and CSV reads live.
 source('unfao-fert-crop.R')
 
+# Temp value until these plots work with ggsave()
+theme.base <- theme.base %+replace% theme(text = element_text(size = 10))
+
 
 # -- Load Fertilizer CSV files ---------------
 

@@ -1,5 +1,4 @@
-# Run `unfao-fert-crop.R` first.
-# That's where the library() calls and CSV reads live.
+# `unfao-fert-crop.R` holds library() calls and themes.
 source('unfao-fert-crop.R')
 
 # -- Load CSV files -------
@@ -8,70 +7,79 @@ source('unfao-fert-crop.R')
 # crops.raw.csv.df <- read.csv("csv/Production_Crops_E_All_Data_(Normalized).csv")
 crops.raw.csv.df <- read.csv("csv/production_crops_expurgated.csv")
 
+
 # -------~~ Clean up crop file --------
 # Just since 2014
 crops.df <- crops.raw.csv.df[crops.raw.csv.df$Year > 2013, ]
+
 # Turn Value = NA to value = 0
 crops.df$Value[is.na(crops.df$Value)] <- 0
+
 # 4 digit Item.Codes are broad categories
 crops.df$category <- nchar(crops.df$Item.Code) == 4
+
 # Pad Item.Code to match FAOSTAT documentation
 crops.df$Item.Code <- str_pad(crops.df$Item.Code, 4, "left", pad = "0")
+
 # Update levels in filtered factor(s).
-# summary(crops.df)
 crops.df$Item <- factor(crops.df$Item)
+
 
 # -------~~ File w/ crop flags ("current", "interest", etc) --------
 items.df <- read.csv("csv/items.csv")
+
 # Pad Item.Code to match FAOSTAT documentation
 items.df$Item.Code <- str_pad(items.df$Item.Code, 4, "left", pad = "0")
-
-# setdiff(crops.df$Item, items.df$Item)
 
 # Join flags to main data frame
 crops.df <- crops.df %>% left_join(items.df[,c(-2)], by = c("Item.Code" = "Item.Code"))
 
 rm(items.df)
-# crops.df$vik.flag <- fct_explicit_na(crops.df$vik.flag)
+
 
 # -------~~ File w/ country flags ("APAC", etc) --------
 countries.df <- read.csv("csv/countries.csv")
+
 # Join flags to main data frame
 crops.df <- crops.df %>% left_join(countries.df)
+
 rm(countries.df)
 
 
 # -- Agave ----------------
 
-agave.df <- filter(crops.df, crops.df$Item.Code == "0800")
-agave.df <- filter(agave.df, agave.df$Area.Code < 5000)
-agave.df <- filter(agave.df, agave.df$Value > 0)
-agave.df <- filter(agave.df, agave.df$Year == 2021)
+# just agave
+# remove regions, only grab countries which produced agave in 2021
+agave.df <- crops.df %>%
+  filter(Item.Code == "0800" & Area.Code < 5000 & Value > 0 & Year == 2021)
 
-ggplot(data = agave.df[agave.df$Element.Code == 5312,]
-       , aes(y = Value, x = reorder(Area, Value), fill = Area)) +
-  geom_bar(stat = "identity", alpha = 0.6) +
-  geom_text(aes(x = Area, y = Value + 750 , label = Value)) +
-  scale_fill_brewer(palette = "Dark2") +
-  theme.base +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)
-        , legend.position = "none") +
-  labs(title = "Agave: global market", subtitle = "Area planted - 2021 Source: FAOSTAT"
-       , y = "hectares", x = "Country") +
-  coord_flip()
+
+agave.plot <-
+  ggplot(data = agave.df[agave.df$Element.Code == 5312,]
+    , aes(x = Value, y = reorder(Area, Value), fill = Area)) +
+    theme.base +
+    theme(legend.position = "none") +
+    geom_col(alpha = 0.6) +
+    geom_text(aes(x = Value + 750 , y = Area, label = Value), size = 1.5) +
+    scale_fill_brewer(palette = "Dark2") +
+    scale_x_continuous(labels = comma) + 
+    labs(title = "Agave: global market", subtitle = "Area planted - 2021 Source: FAOSTAT",
+         x = "Hectares", y = "Country")
+
+agave.plot
+
+ggsave("agave-global-bar.png", path = "plots", agave.plot,
+       width = 1200, height = 860, device = png, units = c("px"))
 
 rm(agave.df)
 
 # -- Broadacre - APAC-----
 
-# Top APAC producers of Sugarcane, Potato, Corn and Rice? Area by country. (Broad Acre)
-broadacre.df <- subset(crops.df, broadacre == 1) %>%
-  subset(Area.Code < 5000) %>%
-  subset(Value > 0) %>%
-  subset(Year == 2021) %>%
-  subset(Grouping == "APAC") %>%
-  subset(Element.Code == 5312)
-
+# Get broadacre production of countries by area. Remove regions. Only APAC & 2021
+# Sugarcane, Potato, Corn and Rice?
+broadacre.df <- crops.df %>%
+  filter(broadacre == 1 & Area.Code < 5000 & Value > 0 & Year == 2021
+         & Grouping == "APAC" & Element.Code == 5312)
 
 breaks.c <- seq(from = 10, to = (max(broadacre.df$Value/1000000)) , by = 10)
 
@@ -79,38 +87,31 @@ broadacre.df$Item <- as.character(broadacre.df$Item)
 # Newest data is all "Maize (corn)"
 # broadacre.df[broadacre.df$Item == 'Maize',]$Item <- "Maize (corn)"
 
-broadacre.facet <- ggplot(data = broadacre.df
-       , aes(y = Value/1000000, x = reorder(Area, Value), fill = Area)) +
-  geom_bar(stat = "identity", alpha = 0.8) +
-  # geom_text(aes(x = Area, y = (Value / 1000000)
-  #               # , label = round(Value / 1000000, digits = 1))
-  #               , label = signif(Value / 1000000, digits = 1))
-  #           , color = "#666666", nudge_y = 4
-  #           ) +
-  geom_hline(yintercept = breaks.c, color = "#ffffff", size = rel(0.3)) +
+
+broadacre.facet <- 
+  ggplot(data = broadacre.df
+    , aes(x = Value/1000000, y = reorder(Area, Value), fill = Area)) +
+  geom_col(alpha = 0.8) +
+  scale_x_continuous(expand = c(0, 0)) +
   scale_fill_brewer(palette = "Set3") +
-  scale_y_continuous(label=comma) +
+  geom_vline(xintercept = breaks.c, color = "#ffffff", linewidth = rel(0.3)) +
   theme.base +
-  theme(title = element_text(size = 14, hjust = 0.5)
-        , axis.title = element_text(size = 12)
-        , axis.text = element_text(size = 12)
-        , axis.text.x = element_text(hjust = 1, vjust = 0.5)
-        , legend.position = "none"
-        , strip.background = element_rect(fill = "#666666")
-        , strip.text = element_text(colour = "#ffffff")
-        # , axis.ticks.y.bottom = element_line(colour = '#666666', size = rel(1.5), linetype = 'solid')
-        ) +
-    labs(title = "Area harvested - 2021 Source: FAOSTAT", y = "Million Hectares", x = "Country") +
-  facet_wrap(facets = vars(Item)) +
-  coord_flip()
+  theme(legend.position = "none") +
+  labs(title = "Area harvested - 2021 Source: FAOSTAT", x = "Million Hectares", y = "Country") +
+  facet_wrap(facets = vars(Item))
+
+
+broadacre.facet
 
 ggsave(
   filename = "apac-broadacre-area-2021-higher-res.png",
+  path = "plots",
   plot = broadacre.facet,
   device = "png",
-  dpi = 500
+  width = 1200, height = 860, units = c("px")
 )
 
+rm(breaks.c)
 
 # rm(broadacre.df, breaks.c)
 
@@ -126,32 +127,30 @@ breaks.c <- seq(from = 100000, to = max(potential.df$total), by = (100000))
 broadacre.bar <- ggplot(data = potential.df
        , aes(y = total, x = year, fill = as.factor(year))) +
   geom_bar(stat = "identity", alpha = 0.7) +
-  geom_text(aes(x = year, y = total + 10000 , label = comma(total)), colour = "#444444") +
+  geom_text(aes(x = year, y = total + 10000 , label = comma(total)), colour = "#444444", size = 1.5) +
   geom_hline(yintercept = breaks.c, color = "#ffffff", size = rel(0.3)) +
   scale_fill_brewer(palette = "Dark2") +
   scale_x_continuous("Year", breaks = years.v, labels = years.v) +
   scale_y_continuous("Volume (ST)", label = comma) +
-  theme(title = element_text(size = 14, hjust = 0.5)
-        , axis.title = element_text(size = 12)
-        , axis.text = element_text(size = 12)
+  theme.base +
+  theme(plot.title = element_text(hjust = 0.5)
         , panel.border = element_blank()
-        , panel.grid.major = element_blank()
-        , panel.grid.minor = element_blank()
-        , axis.text.x = element_text(margin = margin(-15,0,5,0))
-        , axis.text.y = element_text(margin = margin(0,-20,0,0))
-        , axis.ticks = element_blank()
         , legend.position = "none"
         , strip.background = element_rect(fill = "#666666")
-        , strip.text = element_text(colour = "#ffffff")
-  )
+        ) +
+    labs(title = "Broadacre Projection")
+
+broadacre.bar
 
 ggsave(
   filename = "bar-plot-potential-higher-res.png",
+  path = "plots",
   plot = broadacre.bar,
   device = "png",
-  dpi = 500
+  width = 1200, height = 860, units = c("px")
 )
 
+rm(breaks.c)
 
 # -- Data wrangling for China plots -----
 
@@ -179,18 +178,26 @@ bar.df <- china.agg.df[china.agg.df$category == TRUE, ]
 bar.df <- bar.df[bar.df$Element == "Area harvested", ]
 
 # -------~~ Bar chart of larger categories --------
-ggplot(bar.df, aes(y = mean.value, x = reorder(Item, mean.value), fill = Item)) +
-  geom_bar(stat = "identity") +
-  scale_fill_hue(c = 80, l = 80) +  # reduce saturation, increase luminance
-  # scale_fill_brewer(palette = "Dark2") +
-  theme.base +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)
-        , legend.position = "none") +
-  labs(title = "China: crops by area planted", subtitle = "Mean area planted, 2017 - 2021"
-       , y = "hectares", x = "Crop") +
-  coord_flip()
+breaks.c <- seq(from = 25000000, to = (max(bar.df$mean.value)) , by = 25000000)
 
-rm(bar.df)
+ggplot(bar.df, aes(x = mean.value, y = reorder(Item, mean.value), fill = Item)) +
+  geom_col() +
+  scale_fill_hue(c = 80, l = 80) +  # reduce saturation, increase luminance
+  scale_x_continuous(labels = comma) + 
+  geom_vline(xintercept = breaks.c, color = "#ffffff", linewidth = rel(0.3)) +
+  theme.base +
+  theme(legend.position = "none") +
+  labs(title = "China: crops by area planted", subtitle = "Mean area planted, 2017 - 2021"
+       , x = "Hectares", y = "Crop")
+
+ggsave(
+  filename = "china-crops-by-area.png",
+  path = "plots",
+  device = "png",
+  width = 1200, height = 860, units = c("px")
+)
+
+rm(bar.df, breaks.c)
 
 
 # -------~~ China specialty crops --------
@@ -203,16 +210,23 @@ specialty.df <- subset(crops.df, Area == "China") %>%
 breaks.c <- seq(from = 1000000, to = (max(specialty.df$Value)) , by = 1000000)
 
 ggplot(data = specialty.df
-       , aes(y = Value, x = reorder(Item, Value), fill = Item)) +
-  geom_bar(stat = "identity", alpha = 0.6) +
+       , aes(x = Value, y = reorder(Item, Value), fill = Item)) +
+  geom_col(alpha = 0.3) +
+  geom_vline(xintercept = breaks.c, color = "#ffffff", size = rel(0.5)) +
+  geom_text(aes(x = 0, y = Item, label = Item), hjust = 0, size = 1.5) +
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Set1"))(15)) +
-  scale_y_continuous(label = comma) +
-  geom_hline(yintercept = breaks.c, color = "#ffffff", size = rel(0.5)) +
+  scale_x_continuous(label = comma) +
   theme.base +
-  theme(legend.position = "none") +
+  theme(legend.position = "none", axis.text.y=element_blank()) +
   labs(title = "China Specialty Crops : Area Harvested 2021",
-       x = "Crop", y = "Hectares") +
-  coord_flip()
+       x = "Hectares", y = "Crop")
+
+ggsave(
+  filename = "china-specialty-crops-area.png",
+  path = "plots",
+  device = "png",
+  width = 1200, height = 860, units = c("px")
+)
 
 rm(specialty.df, breaks.c)
 
@@ -225,18 +239,18 @@ rm(specialty.df, breaks.c)
 # Re-Calculate median and mean
 china.agg2.df <- china.df %>%
   group_by(category, vik.flag, Item, Element, Unit) %>%
-  # group_by(category, Item, Element, Unit) %>%
   summarise(med.value = median(Value), mean.value = mean(Value), .groups = "keep")
-
-# china.agg2.df %>% drop_na(vik.flag)
 
 scatter.df <- cast(china.agg2.df, category + vik.flag + Item ~ Element
                    , value = "mean.value", fun.aggregate = mean)
-scatter.df <- scatter.df %>% 
-  filter(vik.flag %in% c("current", "interest", "broadacre", "tree nuts"))
+scatter.df <-  
+  filter(scatter.df, vik.flag %in% c("current", "interest", "broadacre", "tree nuts"))
 
 # New column name has a space, so remove it.
 names(scatter.df)<-str_replace_all(names(scatter.df), c(" " = "."))
+
+# Remove crops with no harvest
+scatter.df <- filter(scatter.df, Area.harvested > 0)
 
 labels.df <- scatter.df %>% 
   filter(vik.flag %in% c("current", "interest", "broadacre"))
@@ -244,12 +258,19 @@ labels.df <- scatter.df %>%
 ggplot(scatter.df[scatter.df$category == FALSE,]
        , aes(x = Area.harvested, y = Production, colour = vik.flag, label = Item)) +
   geom_point(size = 2) +
-  # geom_text_repel(labels.df, aes(x = Area.harvested, y = Production, label = Item)) +
-  geom_text_repel(data = labels.df) +
-  scale_color_brewer(type = "qual", palette = "Dark2") +
-  scale_y_log10(label=comma) +
-  scale_x_log10(label=comma) +
+  geom_text_repel(data = labels.df, show.legend = FALSE) +
+  scale_color_brewer(type = "qual", palette = "Set1", name = "Grouping") +
+  scale_y_log10(label = comma) +
+  scale_x_log10(label = comma) +
   # theme.base +
   labs(title = "China 2017-2021 median", subtitle = "log scale"
        , x = "Area harvested (ha)", y = "Production (tonnes)", colour = "group")
   
+ggsave(
+  filename = "china-scatter-plot.png",
+  path = "plots",
+  device = "png",
+  dpi = "print",
+  width = 3600, height = 2580, units = c("px")
+)
+

@@ -27,9 +27,10 @@ When I updated this project with newer data files recently, that the column orde
 I am a fan of [ColorBrewer](https://colorbrewer2.org/) and used it throughout this project, with the help of the `RColorBrewer` library.
 
 
-### Novel (for me) technique
+### Thoughts on ggsave()
 
-This was my first attempt to use the ggsave() function to export a plot to disk, rather than manually export via RStudio's plot viewer.
+This was my first attempt to use the ggsave() function to export a plot to disk, rather than manually export via RStudio's plot viewer. When using ggsave() results are very different than in the plot window. Font sizes get altered and font families are utterly different. It's faster and easier to manually export plots from the plot viewer. Once plot settings are correct for ggsave() to look good, the output in the plot viewer is usually unreadable.
+
 
 Basic requirements
 ------------------
