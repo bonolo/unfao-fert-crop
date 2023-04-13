@@ -20,7 +20,7 @@ I created two CSV settings files, based on conversations with the sales director
 - `items.csv`: categorize crops, create better labels, set data flags
 - `countries.csv`: flag and group countries of interest
 
-When I updated this project with newer data files recently, that the column order had changed, new columns were added, and certain keys (Item Code and Area Code) were inconsistent over time. e.g. the Area Code for Malaysia changed.
+When I updated this project with newer data files recently, the column order had changed, new columns were added, and certain keys (Item Code and Area Code) were inconsistent over time. e.g. the Area Code for Malaysia changed.
 
 ### ColorBrewer
 
